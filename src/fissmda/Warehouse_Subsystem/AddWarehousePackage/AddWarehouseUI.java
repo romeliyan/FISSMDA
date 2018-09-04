@@ -3,18 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fissmda.Warehouse_Subsystem;
+package fissmda.Warehouse_Subsystem.AddWarehousePackage;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import fissmda.Warehouse_Subsystem.Warehouse;
+import fissmda.Warehouse_Subsystem.DBConnection;
+
 /**
  *
  * @author melan
  */
 public class AddWarehouseUI extends javax.swing.JFrame {
 
+    //initialize variables to Establish DB Connection
+    Connection connection = null;
+    PreparedStatement ps = null;
+
     /**
      * Creates new form AddWarehouseUI
      */
     public AddWarehouseUI() {
         initComponents();
+
+        //Establish Connection 
+        try {
+            connection = DBConnection.getConnection();
+            
+        } catch (Exception e) {
+            System.out.println("Unable to Establish Connection with database");
+        }
     }
 
     /**
@@ -57,8 +76,8 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         addWarehouseBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1212, 612));
-        setPreferredSize(new java.awt.Dimension(1212, 612));
+        setTitle("Maradana Distributors WMS ");
+        setResizable(false);
 
         jLabel3.setIcon(new javax.swing.ImageIcon("/home/melan/Desktop/icons8-back-arrow-32.png")); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -133,7 +152,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
         proviceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Northern", "North Western", "Western \t", "North Central\t", "Central \t", "Sabaragamuwa \t", "Eastern \t", "Uva \t", "Southern" }));
 
-        cancleBtn.setText("CANCEL");
+        cancleBtn.setText("CANCLE");
 
         addWarehouseBtn1.setText("ADD WAREHOUSE");
         addWarehouseBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +202,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                                 .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(409, Short.MAX_VALUE))
+                                .addContainerGap(373, Short.MAX_VALUE))
                             .addGroup(PannelRightLayout.createSequentialGroup()
                                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -262,7 +281,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                             .addComponent(warehouseNameLabel4))
                         .addGap(18, 18, 18)
                         .addComponent(proviceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -286,26 +305,17 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PannelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PannelRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(PannelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PannelRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-        new AddWarehouseUI().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void calculateWarehouseCapacityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateWarehouseCapacityBtnActionPerformed
         // TODO add your handling code here:
-      
+        new CalculateWHCapacityUI().setVisible(true);
+
     }//GEN-LAST:event_calculateWarehouseCapacityBtnActionPerformed
 
     private void addWarehouseBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWarehouseBtn1ActionPerformed
@@ -321,11 +331,40 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         String warehouseFaxNumber = faxNumber.getText();
         String warehouseCapacity = capacityValue.getText();
 
+        String sqlExc = "INSERT INTO warehouse (warehouse_name,warehouse_addressline1,warehouse_addressline2,warehouse_addressline3,warehouse_zip,warehouse_province,"
+                + "warehouse_telephoneNumber,warehouse_faxNo,warehouse_capacity) values('" + warehouseNameText + "','" + warehouseAddL1 + "','" + warehouseAddL2 + "','" + warehouseAddL3 + "','" + warehousePostal + "','" + warehouseProvince + "','" + warehouseTelephoneNumber + "','" + warehouseFaxNumber + "','" + warehouseCapacity + "')";
 
+        Warehouse warehouseObj = new Warehouse(warehouseNameText, warehouseAddL1, warehouseAddL2, warehouseAddL3,
+                warehousePostal, warehouseProvince, warehouseTelephoneNumber, warehouseFaxNumber, warehouseCapacity);
 
-        
+        if (warehouseObj.validatewarehouseNameExistInDB() == false) {
+            JOptionPane.showMessageDialog(null, "The Entered Warehouse Name is existing in Database");
+        } else {
+            if (warehouseObj.checkInputTextFiledNull() == false) {
+                JOptionPane.showMessageDialog(null, "Values cannot be null");
+            } else {
+                
+                int choice = JOptionPane.showConfirmDialog(this, "Do You want to Add to Database");
+                if(choice == 0){
+                try {
+                    ps = connection.prepareStatement(sqlExc);
+                    ps.execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                }
+
+            }
+        }
+
 
     }//GEN-LAST:event_addWarehouseBtn1ActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        new AddWarehouseUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -352,6 +391,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AddWarehouseUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
