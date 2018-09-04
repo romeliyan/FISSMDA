@@ -57,9 +57,10 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         addWarehouseBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1274, 815));
+        setMaximumSize(new java.awt.Dimension(1276, 815));
+        setMinimumSize(new java.awt.Dimension(1276, 815));
+        setPreferredSize(new java.awt.Dimension(1276, 815));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/melan/Desktop/icons8-back-arrow-32.png")); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -192,7 +193,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                                         .addComponent(capacityValue, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(34, 34, 34)
                                         .addComponent(calculateWarehouseCapacityBtn)))
-                                .addGap(0, 218, Short.MAX_VALUE))))
+                                .addGap(0, 280, Short.MAX_VALUE))))
                     .addGroup(PannelRightLayout.createSequentialGroup()
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PannelRightLayout.createSequentialGroup()
@@ -261,7 +262,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                             .addComponent(warehouseNameLabel4))
                         .addGap(18, 18, 18)
                         .addComponent(proviceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,12 +293,6 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-        new AddWarehouseUI().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void calculateWarehouseCapacityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateWarehouseCapacityBtnActionPerformed
         // TODO add your handling code here:
       
@@ -321,6 +316,12 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_addWarehouseBtn1ActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        new AddWarehouseUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

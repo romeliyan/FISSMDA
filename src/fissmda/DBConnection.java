@@ -16,23 +16,22 @@ import java.sql.SQLException;
  */
 public class DBConnection {
     
-    public Connection getConnection() throws ClassNotFoundException, SQLException
+    public static Connection getConnection() throws ClassNotFoundException, SQLException
     {
         try
 	{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/fissmda", "root", "");
             return connection;
 	}
 	catch(ClassNotFoundException e)
-	{
-            e.printStackTrace();
+        {
             return null;
 	}
 	catch(SQLException e)
         {
-            e.printStackTrace();
             return null;
 	}
+        
     }
 }
