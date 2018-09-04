@@ -4,7 +4,10 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1274, 815]"/>
+      <Dimension value="[1212, 612]"/>
+    </Property>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1212, 612]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -36,8 +39,14 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PannelLeft" alignment="0" max="32767" attributes="0"/>
-          <Component id="PannelRight" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="PannelLeft" alignment="0" max="32767" attributes="0"/>
+                  <Component id="PannelRight" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -254,7 +263,7 @@
                           <Component id="proviceCombo" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace pref="144" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="addWarehouseBtn1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="cancleBtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
