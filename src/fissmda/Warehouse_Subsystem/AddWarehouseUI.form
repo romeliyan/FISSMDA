@@ -392,7 +392,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="cancleBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CANCLE"/>
+            <Property name="text" type="java.lang.String" value="CANCEL"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="addWarehouseBtn1">

@@ -131,7 +131,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
         proviceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Northern", "North Western", "Western \t", "North Central\t", "Central \t", "Sabaragamuwa \t", "Eastern \t", "Uva \t", "Southern" }));
 
-        cancleBtn.setText("CANCLE");
+        cancleBtn.setText("CANCEL");
 
         addWarehouseBtn1.setText("ADD WAREHOUSE");
         addWarehouseBtn1.addActionListener(new java.awt.event.ActionListener() {
