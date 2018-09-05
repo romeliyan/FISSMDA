@@ -7,9 +7,11 @@ package fissmda.Warehouse_Subsystem.UpdateWarehousePackage;
 
 import fissmda.Warehouse_Subsystem.DBConnection;
 import fissmda.Warehouse_Subsystem.AddWarehousePackage.AddWarehouseUI;
+import fissmda.Warehouse_Subsystem.Warehouse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -21,28 +23,23 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
     /**
      * Creates new form UpdateWarehouseUI
      */
-    
-     //Initialize variable for establish database connection
+    //Initialize variable for establish database connection
     Connection connection;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
-    
+    public String warehouseID;
+
     public UpdateWarehouseUI() {
         initComponents();
         connection = DBConnection.getConnection();
         refreshTable();
     }
 
-    
-    
-    
-    
-      public void refreshTable() {
+    public void refreshTable() {
 
         String sqlExec = "SELECT * FROM warehouse";
         try {
-            
+
             ps = connection.prepareStatement(sqlExec);
             rs = ps.executeQuery();
             updateJTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -51,12 +48,7 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    
-    
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,8 +62,8 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         updateJTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         warehouseName = new javax.swing.JTextField();
@@ -118,12 +110,17 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(updateJTable);
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 102));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("CANCEL");
+        cancelBtn.setBackground(new java.awt.Color(255, 102, 102));
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("CANCEL");
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 0));
-        jButton2.setText("UPDATE");
+        updateBtn.setBackground(new java.awt.Color(153, 255, 0));
+        updateBtn.setText("UPDATE");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -137,9 +134,9 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 881, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -149,8 +146,8 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
@@ -312,11 +309,11 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
 
     private void updateJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateJTableMouseClicked
         // TODO add your handling code here:
-        
-        
+
         int selectedRow = updateJTable.getSelectedRow();
-        
-         String warehouseNameText = updateJTable.getValueAt(selectedRow, 1).toString();
+
+        warehouseID = updateJTable.getValueAt(selectedRow, 0).toString();
+        String warehouseNameText = updateJTable.getValueAt(selectedRow, 1).toString();
         String warehouseAddL1 = updateJTable.getValueAt(selectedRow, 2).toString();
         String warehouseAddL2 = updateJTable.getValueAt(selectedRow, 3).toString();
         String warehouseAddL3 = updateJTable.getValueAt(selectedRow, 4).toString();
@@ -325,9 +322,7 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         String warehouseTelephoneNumber = updateJTable.getValueAt(selectedRow, 7).toString();
         String warehouseFaxNumber = updateJTable.getValueAt(selectedRow, 8).toString();
         String warehouseCapacity = updateJTable.getValueAt(selectedRow, 9).toString();
-      
-       
-        
+
         warehouseName.setText(warehouseNameText);
         addressLine01.setText(warehouseAddL1);
         addressLine02.setText(warehouseAddL2);
@@ -337,8 +332,62 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         proviceCombo.setSelectedItem(warehouseProvince);
         faxNumber.setText(warehouseFaxNumber);
         capacityValue.setText(warehouseCapacity);
-        
+
     }//GEN-LAST:event_updateJTableMouseClicked
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+
+        // TODO add your handling code here:
+        int choiceValue = JOptionPane.showConfirmDialog(null, "Do You Want to Update Database ?");
+
+        if (choiceValue == 0) {
+            //when user accpets the changes
+            String warehouseNameText = warehouseName.getText();
+            String warehouseAddL1 = addressLine01.getText();
+            String warehouseAddL2 = addressLine02.getText();
+            String warehouseAddL3 = addressLine03.getText();
+            String warehousePostal = postalZipCode.getText();
+            String warehouseProvince = proviceCombo.getSelectedItem().toString();
+            String warehouseTelephoneNumber = telephoneNumber.getText();
+            String warehouseFaxNumber = faxNumber.getText();
+            String warehouseCapacity = capacityValue.getText();
+
+            //Check user entered wearhouse name existing on database
+            Warehouse warehouseObj = new Warehouse(warehouseNameText, warehouseAddL1, warehouseAddL2, warehouseAddL3,
+                    warehousePostal, warehouseProvince, warehouseTelephoneNumber, warehouseFaxNumber, warehouseCapacity);
+
+            if (warehouseObj.validatewarehouseNameExistInDB() == false) {
+                JOptionPane.showMessageDialog(null, "The Entered Warehouse Name is existing in Database");
+            } else {
+                if (warehouseObj.checkInputTextFiledNull() == false) {
+                    JOptionPane.showMessageDialog(null, "Values cannot be null");
+                } else {
+
+                    if (warehouseObj.validateContactNumbers()) { // execute if valid 
+
+                        try {
+
+                            String sqlExc = "UPDATE  warehouse SET warehouse_name='" + warehouseNameText + "',warehouse_addressline1='" + warehouseAddL1 + "',warehouse_addressline2='" + warehouseAddL2 + "',warehouse_addressline3='" + warehouseAddL3 + "',warehouse_zip='" + warehousePostal + "',warehouse_province='" + warehouseProvince + "',"
+                                    + "warehouse_telephoneNumber='" + warehouseTelephoneNumber + "',warehouse_faxNo='" + warehouseFaxNumber + "',warehouse_capacity='" + warehouseCapacity + "' Where wID = '" + warehouseID + "'";
+
+                            ps = connection.prepareStatement(sqlExc);
+                            ps.execute();
+                            JOptionPane.showMessageDialog(this, "Successfully Added to Database");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                }
+            }
+
+        
+        } else {
+
+        }
+
+    }//GEN-LAST:event_updateBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,10 +435,9 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
     private javax.swing.JTextField addressLine01;
     private javax.swing.JTextField addressLine02;
     private javax.swing.JTextField addressLine03;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JTextField capacityValue;
     private javax.swing.JTextField faxNumber;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -398,6 +446,7 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
     private javax.swing.JTextField postalZipCode;
     private javax.swing.JComboBox<String> proviceCombo;
     private javax.swing.JTextField telephoneNumber;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JTable updateJTable;
     private javax.swing.JTextField warehouseName;
     private javax.swing.JLabel warehouseNameLabel;
