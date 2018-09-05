@@ -373,6 +373,7 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
                             ps = connection.prepareStatement(sqlExc);
                             ps.execute();
                             JOptionPane.showMessageDialog(this, "Successfully Added to Database");
+                            refreshTable();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
