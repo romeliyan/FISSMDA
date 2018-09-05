@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author pasindu
  */
-public class DBConnection {
+public  class DBConnection {
     
     public static Connection getConnection() throws ClassNotFoundException, SQLException
     {
@@ -25,14 +25,13 @@ public class DBConnection {
             return connection;
 	}
 	catch(ClassNotFoundException e)
-	{
-            e.printStackTrace();
+        {
             return null;
 	}
 	catch(SQLException e)
         {
-            e.printStackTrace();
             return null;
 	}
+        
     }
 }
