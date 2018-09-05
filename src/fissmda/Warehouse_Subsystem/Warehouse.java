@@ -6,7 +6,7 @@
 package fissmda.Warehouse_Subsystem;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement; 
+import java.sql.PreparedStatement;
 import fissmda.Warehouse_Subsystem.DBConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +32,7 @@ public class Warehouse {
     private String warehouseTelephoneNumber;
     private String warehouseFaxNumber;
     private String warehouseCapacity;
-    
+
     //Warehouse Dimention Variables
     private double warehouseLength;
     private double warehouseWidth;
@@ -52,9 +52,8 @@ public class Warehouse {
         this.warehouseFaxNumber = warehouseFaxNumber;
         this.warehouseCapacity = warehouseCapacity;
     }
-    
-    //define a constructor initialize dimentions
 
+    //define a constructor initialize dimentions
     public Warehouse(double warehouseLength, double warehouseWidth, double warehouseDepth, double warePalletWidth, double warePalletHeight) {
         this.warehouseLength = warehouseLength;
         this.warehouseWidth = warehouseWidth;
@@ -62,17 +61,16 @@ public class Warehouse {
         this.warePalletWidth = warePalletWidth;
         this.warePalletHeight = warePalletHeight;
     }
-    
 
     //Warehouse inputs validations block
     public boolean validatewarehouseNameExistInDB() {
 
-       connection = DBConnection.getConnection();
+        connection = DBConnection.getConnection();
         String sqlExc = "select * from warehouse where warehouse_name  = '" + warehouseNameText + "'";
         ResultSet rs = null;
 
         try {
-             
+
             ps = connection.prepareStatement(sqlExc);
             rs = ps.executeQuery();
 
@@ -87,26 +85,60 @@ public class Warehouse {
 
         return true;
     }
-    
-    public boolean checkInputTextFiledNull(){
-    
-        if(warehouseNameText.isEmpty()|| warehouseAddL1.isEmpty() || warehouseAddL2.isEmpty() || warehousePostal.isEmpty() || warehouseTelephoneNumber.isEmpty() || warehouseFaxNumber.isEmpty() || warehouseCapacity.isEmpty() ){
-        
+
+    public boolean checkInputTextFiledNull() {
+
+        if (warehouseNameText.isEmpty() || warehouseAddL1.isEmpty() || warehouseAddL2.isEmpty() || warehousePostal.isEmpty() || warehouseTelephoneNumber.isEmpty() || warehouseFaxNumber.isEmpty() || warehouseCapacity.isEmpty()) {
+
             return false;
-        }else{
+        } else {
             return true;
         }
-    
-    
+
+    }
+
+    //Validate FaxNumber And Telephone Number
+    public boolean validateContactNumbers() {
+
+        String validPhase = "^[0-9]{10}$";
+        if (this.warehouseTelephoneNumber.matches(validPhase)) {
+
+            if (this.warehouseFaxNumber.matches(validPhase)) {
+                return true;
+            } else {
+                  new JOptionPane().showMessageDialog(null, "Fax Number is not valid");
+                  return false;
+            }
+        } else {
+            
+            new JOptionPane().showMessageDialog(null, "Telephone Number is not valid");
+            return false;
+        }
+
     }
     
-    public double calculateWarehouseCapacity(){
-        return warehouseLength*warehouseWidth*warehouseDepth;
+    
+    //validate postal code 
+    public boolean validatePostalCode(){
+        
+        String validPhase = "^[0-9]$";
+        if(this.warehousePostal.matches(validPhase)){
+            return true;
+        }else{
+            new JOptionPane().showMessageDialog(null, "Postal / ZIP Number is not valid");
+            return false;
+        }
     }
-    
-    public double calculateWarehouseCoefficient(){
-    
-        int numberOfTotalPallet = ((int) warehouseWidth * (int)warehouseLength)/((int)warePalletWidth*(int)warePalletHeight);
-        return calculateWarehouseCapacity()/(double)numberOfTotalPallet;
+
+//calculate warehouse cpacity only    
+    public double calculateWarehouseCapacity() {
+        return warehouseLength * warehouseWidth * warehouseDepth;
+    }
+
+    //calculate warehouse coeffiecent value
+    public double calculateWarehouseCoefficient() {
+
+        int numberOfTotalPallet = ((int) warehouseWidth * (int) warehouseLength) / ((int) warePalletWidth * (int) warePalletHeight);
+        return calculateWarehouseCapacity() / (double) numberOfTotalPallet;
     }
 }

@@ -16,62 +16,52 @@ import java.sql.ResultSet;
  */
 public class WarehouseDashboard extends javax.swing.JFrame {
 
-    
     Connection connection;
     PreparedStatement ps;
     ResultSet rs;
     public String selectedItemName = null;
-    
+
     /**
      * Creates new form WarehouseDashboard
      */
     public WarehouseDashboard() {
         initComponents();
 
-       // Establish Connection 
+        // Establish Connection 
         try {
             connection = DBConnection.getConnection();
             fillCombo();
-            
+
         } catch (Exception e) {
             System.out.println("Unable to Establish Connection with database");
         }
-        
-        
+
     }
-    
-    public void setSelectedItemName(String value){
-    
-        this.selectedItemName=value;
+
+    public void setSelectedItemName(String value) {
+
+        this.selectedItemName = value;
     }
-    
-    public void fillCombo(){
-    
-    try{
-    
-        
-        String sqlExec = "select * from warehouse";
-        ps = connection.prepareStatement(sqlExec);
-        rs = ps.executeQuery();
-        
-         while(rs.next()){
-             String getWarehouseName = rs.getString("warehouse_name");
-             warehouseSelector.addItem(getWarehouseName);
-         }
-  
-    
-    }catch(Exception e){
-    
+
+    public void fillCombo() {
+
+        try {
+
+            String sqlExec = "select * from warehouse";
+            ps = connection.prepareStatement(sqlExec);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String getWarehouseName = rs.getString("warehouse_name");
+                warehouseSelector.addItem(getWarehouseName);
+            }
+
+        } catch (Exception e) {
+
             e.printStackTrace();
-        
+
+        }
     }
-    }
-    
-    
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,47 +72,104 @@ public class WarehouseDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        kGradientPanel1 = new keeptoo.KGradientPanel();
+        kGradientPanel2 = new keeptoo.KGradientPanel();
+        jLabel2 = new javax.swing.JLabel();
+        warehouseDisplayCapacity = new javax.swing.JLabel();
+        warehouseNameView = new javax.swing.JLabel();
+        warehouseCapacityView = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        warehouseNameLoad = new javax.swing.JLabel();
+        warehouseTelephoneView = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         warehouseSelector = new javax.swing.JComboBox<>();
+        kGradientPanel3 = new keeptoo.KGradientPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel1.setBackground(new java.awt.Color(31, 20, 32));
+        kGradientPanel1.setkEndColor(new java.awt.Color(36, 36, 62));
+        kGradientPanel1.setkGradientFocus(200);
+        kGradientPanel1.setkStartColor(new java.awt.Color(15, 12, 41));
 
-        jPanel2.setBackground(new java.awt.Color(41, 171, 135));
+        kGradientPanel2.setkEndColor(new java.awt.Color(15, 52, 67));
+        kGradientPanel2.setkGradientFocus(999);
+        kGradientPanel2.setkStartColor(new java.awt.Color(52, 232, 158));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/Warehouse_Subsystem/resources/warehouse(2).png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/Warehouse_Subsystem/resources/warehouse(2).png"))); // NOI18N
 
-        warehouseNameLoad.setBackground(new java.awt.Color(51, 51, 51));
-        warehouseNameLoad.setFont(new java.awt.Font("DejaVu Sans", 1, 24)); // NOI18N
-        warehouseNameLoad.setText("warehouse_name_here");
+        warehouseDisplayCapacity.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 18)); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(warehouseNameLoad)
-                .addContainerGap(413, Short.MAX_VALUE))
+        warehouseNameView.setBackground(new java.awt.Color(255, 255, 255));
+        warehouseNameView.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        warehouseNameView.setForeground(new java.awt.Color(255, 255, 255));
+        warehouseNameView.setText("jLabel1");
+
+        warehouseCapacityView.setBackground(new java.awt.Color(255, 255, 255));
+        warehouseCapacityView.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        warehouseCapacityView.setForeground(new java.awt.Color(255, 255, 255));
+        warehouseCapacityView.setText("ware");
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("capacity  :");
+
+        warehouseTelephoneView.setBackground(new java.awt.Color(255, 255, 255));
+        warehouseTelephoneView.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        warehouseTelephoneView.setForeground(new java.awt.Color(255, 255, 255));
+        warehouseTelephoneView.setText("jLabel3");
+
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Telephone Number   :");
+
+        javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
+        kGradientPanel2.setLayout(kGradientPanel2Layout);
+        kGradientPanel2Layout.setHorizontalGroup(
+            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGap(388, 388, 388)
+                        .addComponent(warehouseDisplayCapacity))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel2)
+                        .addGap(81, 81, 81)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(warehouseNameView)
+                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3))
+                                .addGap(58, 58, 58)
+                                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(warehouseTelephoneView)
+                                    .addComponent(warehouseCapacityView))))))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(warehouseNameLoad)))
-                .addContainerGap(68, Short.MAX_VALUE))
+        kGradientPanel2Layout.setVerticalGroup(
+            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(warehouseDisplayCapacity)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(warehouseNameView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(warehouseCapacityView))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(warehouseTelephoneView)
+                            .addComponent(jLabel3)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         warehouseSelector.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -135,59 +182,85 @@ public class WarehouseDashboard extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(warehouseSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+        kGradientPanel3.setkEndColor(new java.awt.Color(15, 52, 67));
+        kGradientPanel3.setkGradientFocus(999);
+        kGradientPanel3.setkStartColor(new java.awt.Color(52, 232, 158));
+
+        javax.swing.GroupLayout kGradientPanel3Layout = new javax.swing.GroupLayout(kGradientPanel3);
+        kGradientPanel3.setLayout(kGradientPanel3Layout);
+        kGradientPanel3Layout.setHorizontalGroup(
+            kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 445, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+        kGradientPanel3Layout.setVerticalGroup(
+            kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
+        kGradientPanel1.setLayout(kGradientPanel1Layout);
+        kGradientPanel1Layout.setHorizontalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(warehouseSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(kGradientPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        kGradientPanel1Layout.setVerticalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(warehouseSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(kGradientPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void warehouseSelectorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_warehouseSelectorPopupMenuWillBecomeInvisible
         // TODO add your handling code here:
-        String selectedItem = warehouseSelector.getSelectedItem().toString();
-        String sqlExec = "Select * from warehouse where warehouse_name = '"+selectedItem+"'";
-        
-        try{
-        
+
+        String getSelectedItem = warehouseSelector.getSelectedItem().toString();
+        String sqlExec = "select * from warehouse where warehouse_name='" + getSelectedItem + "'";
+        try {
             ps = connection.prepareStatement(sqlExec);
-            rs=ps.executeQuery();
-            if(rs.next()){
-            
-                String warehouseNameDB = rs.getString("warehouse_name");
-                warehouseNameLoad.setText(warehouseNameDB);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String dbReturnName = rs.getString(2);
+                String dbReturnCapacity = rs.getString(1);
+                String dbReturnTelephone = rs.getString(8);
+
+                warehouseNameView.setText(dbReturnName);
+                warehouseCapacityView.setText(dbReturnCapacity + " sq.m");
+                warehouseTelephoneView.setText(dbReturnTelephone);
             }
-            
-            
-        }catch(Exception e){
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+
     }//GEN-LAST:event_warehouseSelectorPopupMenuWillBecomeInvisible
 
     /**
@@ -227,9 +300,15 @@ public class WarehouseDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel warehouseNameLoad;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private keeptoo.KGradientPanel kGradientPanel1;
+    private keeptoo.KGradientPanel kGradientPanel2;
+    private keeptoo.KGradientPanel kGradientPanel3;
+    private javax.swing.JLabel warehouseCapacityView;
+    private javax.swing.JLabel warehouseDisplayCapacity;
+    private javax.swing.JLabel warehouseNameView;
     private javax.swing.JComboBox<String> warehouseSelector;
+    private javax.swing.JLabel warehouseTelephoneView;
     // End of variables declaration//GEN-END:variables
 }

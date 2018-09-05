@@ -344,7 +344,8 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Values cannot be null");
             } else {
                 
-                int choice = JOptionPane.showConfirmDialog(this, "Do You want to Add to Database");
+                    if(warehouseObj.validateContactNumbers()){ // execute if valid 
+                        int choice = JOptionPane.showConfirmDialog(this, "Do You want to Add to Database");
                 if(choice == 0){
                 try {
                     ps = connection.prepareStatement(sqlExc);
@@ -353,12 +354,18 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                }
+                        
+                    }else{
+                    JOptionPane.showMessageDialog(this, "Attempt Fail");
+                    }
+                
+                
+                
 
-            }
+            
         }
 
-
+            }}
     }//GEN-LAST:event_addWarehouseBtn1ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
