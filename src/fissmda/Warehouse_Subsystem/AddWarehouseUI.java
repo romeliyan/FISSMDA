@@ -58,7 +58,6 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/melan/Desktop/icons8-back-arrow-32.png")); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,6 +90,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         );
 
         PannelRight.setBackground(new java.awt.Color(51, 102, 0));
+        PannelRight.setRequestFocusEnabled(false);
 
         WarehouseContactInformationLabel.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
         WarehouseContactInformationLabel.setText("Warehouse Contact Information");
@@ -191,7 +191,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                                         .addComponent(capacityValue, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(34, 34, 34)
                                         .addComponent(calculateWarehouseCapacityBtn)))
-                                .addGap(0, 218, Short.MAX_VALUE))))
+                                .addGap(0, 282, Short.MAX_VALUE))))
                     .addGroup(PannelRightLayout.createSequentialGroup()
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PannelRightLayout.createSequentialGroup()
