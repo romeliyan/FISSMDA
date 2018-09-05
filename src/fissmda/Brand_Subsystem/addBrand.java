@@ -76,12 +76,13 @@ public class addBrand extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 0));
         setMaximumSize(new java.awt.Dimension(1276, 815));
         setMinimumSize(new java.awt.Dimension(1276, 815));
         setPreferredSize(new java.awt.Dimension(1276, 815));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(51, 102, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(350, 50));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
