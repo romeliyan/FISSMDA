@@ -77,6 +77,9 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Maradana Distributors WMS ");
+        setMaximumSize(new java.awt.Dimension(1276, 815));
+        setMinimumSize(new java.awt.Dimension(1276, 815));
+        setPreferredSize(new java.awt.Dimension(1276, 815));
         setResizable(false);
 
         jLabel3.setIcon(new javax.swing.ImageIcon("/home/melan/Desktop/icons8-back-arrow-32.png")); // NOI18N
@@ -116,31 +119,41 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         WarehouseContactInformationLabel.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
         WarehouseContactInformationLabel.setText("Warehouse Contact Information");
 
+        warehouseNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         warehouseNameLabel.setText("Warehouse Name");
 
+        AddressLine01Label.setForeground(new java.awt.Color(255, 255, 255));
         AddressLine01Label.setText("Address Line 01");
 
+        AddressLine02Label.setForeground(new java.awt.Color(255, 255, 255));
         AddressLine02Label.setText("Address Line 02");
 
+        AddressLine03Label.setForeground(new java.awt.Color(255, 255, 255));
         AddressLine03Label.setText("Address Line 03");
 
+        warehouseNameLabel4.setForeground(new java.awt.Color(255, 255, 255));
         warehouseNameLabel4.setText("Postal Code / ZIP");
 
+        warehouseNameLabel5.setForeground(new java.awt.Color(255, 255, 255));
         warehouseNameLabel5.setText("Province / State");
 
         BasicInformationLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
         BasicInformationLabel1.setText("Basic Information");
 
+        FaxNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         FaxNumberLabel.setText("Fax Number");
 
+        TelephoneNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
         TelephoneNumberLabel.setText("Telephone Number");
 
         WarehouseContactInformationLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
         WarehouseContactInformationLabel1.setText("Warehouse Capacity Information");
 
+        FaxNumberLabel2.setForeground(new java.awt.Color(255, 255, 255));
         FaxNumberLabel2.setText("Capacity ");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("(Approximate Value / CubicFeet)");
 
         calculateWarehouseCapacityBtn.setText("Calculate Capacity");
@@ -152,8 +165,10 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
         proviceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Northern", "North Western", "Western \t", "North Central\t", "Central \t", "Sabaragamuwa \t", "Eastern \t", "Uva \t", "Southern" }));
 
+        cancleBtn.setBackground(new java.awt.Color(255, 51, 102));
         cancleBtn.setText("CANCLE");
 
+        addWarehouseBtn1.setBackground(new java.awt.Color(102, 255, 102));
         addWarehouseBtn1.setText("ADD WAREHOUSE");
         addWarehouseBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,41 +207,41 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(postalZipCode)
                             .addComponent(proviceCombo, 0, 244, Short.MAX_VALUE))))
-                .addGap(56, 56, 56)
                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PannelRightLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PannelRightLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(373, Short.MAX_VALUE))
+                                .addGap(161, 161, 161)
+                                .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PannelRightLayout.createSequentialGroup()
+                                .addGap(56, 56, 56)
                                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(PannelRightLayout.createSequentialGroup()
-                                        .addComponent(FaxNumberLabel2)
-                                        .addGap(144, 144, 144)
-                                        .addComponent(capacityValue, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(calculateWarehouseCapacityBtn)))
-                                .addGap(0, 218, Short.MAX_VALUE))))
+                                    .addComponent(WarehouseContactInformationLabel1)
+                                    .addComponent(WarehouseContactInformationLabel))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PannelRightLayout.createSequentialGroup()
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PannelRightLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
+                                .addGap(72, 72, 72)
+                                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(FaxNumberLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(59, 59, 59)
+                                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(calculateWarehouseCapacityBtn)
+                                    .addComponent(capacityValue, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PannelRightLayout.createSequentialGroup()
+                                .addGap(70, 70, 70)
                                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TelephoneNumberLabel)
                                     .addComponent(FaxNumberLabel))
                                 .addGap(75, 75, 75)
                                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(faxNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(telephoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(WarehouseContactInformationLabel1)
-                            .addComponent(WarehouseContactInformationLabel))
-                        .addContainerGap())))
+                                    .addComponent(telephoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 317, Short.MAX_VALUE))))
             .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PannelRightLayout.createSequentialGroup()
                     .addGap(16, 16, 16)
@@ -253,12 +268,14 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(capacityValue, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FaxNumberLabel2)
-                            .addComponent(calculateWarehouseCapacityBtn))
+                            .addComponent(FaxNumberLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addGap(58, 58, 58)
-                        .addComponent(warehouseNameLabel5))
+                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PannelRightLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(58, 58, 58)
+                                .addComponent(warehouseNameLabel5))
+                            .addComponent(calculateWarehouseCapacityBtn)))
                     .addGroup(PannelRightLayout.createSequentialGroup()
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(warehouseName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,11 +298,11 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                             .addComponent(warehouseNameLabel4))
                         .addGap(18, 18, 18)
                         .addComponent(proviceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
+                    .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88))
             .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PannelRightLayout.createSequentialGroup()
                     .addGap(97, 97, 97)
@@ -312,11 +329,11 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void calculateWarehouseCapacityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateWarehouseCapacityBtnActionPerformed
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
-        new CalculateWHCapacityUI().setVisible(true);
-
-    }//GEN-LAST:event_calculateWarehouseCapacityBtnActionPerformed
+        new AddWarehouseUI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     private void addWarehouseBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addWarehouseBtn1ActionPerformed
         // TODO add your handling code here:
@@ -332,10 +349,10 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         String warehouseCapacity = capacityValue.getText();
 
         String sqlExc = "INSERT INTO warehouse (warehouse_name,warehouse_addressline1,warehouse_addressline2,warehouse_addressline3,warehouse_zip,warehouse_province,"
-                + "warehouse_telephoneNumber,warehouse_faxNo,warehouse_capacity) values('" + warehouseNameText + "','" + warehouseAddL1 + "','" + warehouseAddL2 + "','" + warehouseAddL3 + "','" + warehousePostal + "','" + warehouseProvince + "','" + warehouseTelephoneNumber + "','" + warehouseFaxNumber + "','" + warehouseCapacity + "')";
+        + "warehouse_telephoneNumber,warehouse_faxNo,warehouse_capacity) values('" + warehouseNameText + "','" + warehouseAddL1 + "','" + warehouseAddL2 + "','" + warehouseAddL3 + "','" + warehousePostal + "','" + warehouseProvince + "','" + warehouseTelephoneNumber + "','" + warehouseFaxNumber + "','" + warehouseCapacity + "')";
 
         Warehouse warehouseObj = new Warehouse(warehouseNameText, warehouseAddL1, warehouseAddL2, warehouseAddL3,
-                warehousePostal, warehouseProvince, warehouseTelephoneNumber, warehouseFaxNumber, warehouseCapacity);
+            warehousePostal, warehouseProvince, warehouseTelephoneNumber, warehouseFaxNumber, warehouseCapacity);
 
         if (warehouseObj.validatewarehouseNameExistInDB() == false) {
             JOptionPane.showMessageDialog(null, "The Entered Warehouse Name is existing in Database");
@@ -343,36 +360,31 @@ public class AddWarehouseUI extends javax.swing.JFrame {
             if (warehouseObj.checkInputTextFiledNull() == false) {
                 JOptionPane.showMessageDialog(null, "Values cannot be null");
             } else {
-                
-                    if(warehouseObj.validateContactNumbers()){ // execute if valid 
-                        int choice = JOptionPane.showConfirmDialog(this, "Do You want to Add to Database");
-                if(choice == 0){
-                try {
-                    ps = connection.prepareStatement(sqlExc);
-                    ps.execute();
-                    JOptionPane.showMessageDialog(this, "Successfully Added to Database");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                        
-                    }else{
-                    JOptionPane.showMessageDialog(this, "Attempt Fail");
-                    }
-                
-                
-                
 
-            
-        }
+                if(warehouseObj.validateContactNumbers()){ // execute if valid
+                    int choice = JOptionPane.showConfirmDialog(this, "Do You want to Add to Database");
+                    if(choice == 0){
+                        try {
+                            ps = connection.prepareStatement(sqlExc);
+                            ps.execute();
+                            JOptionPane.showMessageDialog(this, "Successfully Added to Database");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Attempt Fail");
+                    }
+
+                }
 
             }}
     }//GEN-LAST:event_addWarehouseBtn1ActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void calculateWarehouseCapacityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateWarehouseCapacityBtnActionPerformed
         // TODO add your handling code here:
-        new AddWarehouseUI().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel3MouseClicked
+        new CalculateWHCapacityUI().setVisible(true);
+    }//GEN-LAST:event_calculateWarehouseCapacityBtnActionPerformed
 
     /**
      * @param args the command line arguments
