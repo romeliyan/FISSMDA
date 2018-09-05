@@ -60,7 +60,6 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1212, 612));
         setPreferredSize(new java.awt.Dimension(1212, 612));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/melan/Desktop/icons8-back-arrow-32.png")); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
