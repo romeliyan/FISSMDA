@@ -6,6 +6,7 @@
 package fissmda.Warehouse_Subsystem.DashBoardPackage;
 
 import fissmda.Warehouse_Subsystem.DBConnection;
+import fissmda.Warehouse_Subsystem.WMSUI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -468,6 +469,8 @@ public class WarehouseDashboard extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
+         new WMSUI().setVisible(true);
+        this.setVisible(false);
        
     }//GEN-LAST:event_jLabel7MouseClicked
 

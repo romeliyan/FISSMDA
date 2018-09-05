@@ -6,6 +6,7 @@
 package fissmda.Warehouse_Subsystem.DeleteWarehousePackage;
 import fissmda.Warehouse_Subsystem.DBConnection;
 import fissmda.Warehouse_Subsystem.AddWarehousePackage.AddWarehouseUI;
+import fissmda.Warehouse_Subsystem.WMSUI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,7 +75,6 @@ public class DeleteWarehouseUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1276, 815));
         setMinimumSize(new java.awt.Dimension(1276, 815));
-        setPreferredSize(new java.awt.Dimension(1276, 815));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,7 +188,7 @@ public class DeleteWarehouseUI extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
-        new AddWarehouseUI().setVisible(true);
+         new WMSUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
 

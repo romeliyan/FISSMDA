@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import fissmda.Warehouse_Subsystem.Warehouse;
 import fissmda.Warehouse_Subsystem.DBConnection;
+import fissmda.Warehouse_Subsystem.WMSUI;
 
 /**
  *
@@ -153,7 +154,6 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         FaxNumberLabel2.setText("Capacity ");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("(Approximate Value / CubicFeet)");
 
         calculateWarehouseCapacityBtn.setText("Calculate Capacity");
@@ -331,7 +331,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
-        new AddWarehouseUI().setVisible(true);
+        new WMSUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
 
