@@ -332,7 +332,6 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         proviceCombo.setSelectedItem(warehouseProvince);
         faxNumber.setText(warehouseFaxNumber);
         capacityValue.setText(warehouseCapacity);
-
     }//GEN-LAST:event_updateJTableMouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
@@ -387,7 +386,6 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         } else {
 
         }
-
     }//GEN-LAST:event_updateBtnActionPerformed
 
     /**
