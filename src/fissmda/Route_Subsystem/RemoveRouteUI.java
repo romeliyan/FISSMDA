@@ -5,7 +5,21 @@
  */
 package fissmda.Route_Subsystem;
 
+
+import fissmda.Route_Subsystem.AddRouteUI;
+
+import fissmda.DBConnection;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableColumnModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -13,11 +27,102 @@ import javax.swing.JOptionPane;
  */
 public class RemoveRouteUI extends javax.swing.JFrame {
 
+     Connection connection = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
     /**
      * Creates new form AddRouteUI
      */
     public RemoveRouteUI() {
         initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        try {
+            //create objects
+            connection = DBConnection.getConnection();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RemoveRouteUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RemoveRouteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        loadRouteTable();
+        
+        fillRouteComboBox();
+    }
+    
+    
+    
+    public void fillRouteComboBox(){
+        
+        
+        try {
+            String getBrand = "SELECT * FROM route";
+            ps = connection.prepareStatement(getBrand);
+            ResultSet rs = ps.executeQuery(getBrand);
+            
+            //remove all available items 
+            selectRouteComboBox.removeAllItems();
+            
+            while(rs.next()){
+                
+                selectRouteComboBox.addItem(rs.getString("name") );
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AddRouteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //method to load the routeTable with content
+    public void loadRouteTable(){
+ 
+        
+        try {
+            String query = "SELECT rID as 'Route ID', name as 'Route Name', distance as 'Distance(KM)' FROM route";
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            routeTable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            //change row height
+            routeTable.setRowHeight(30);
+            
+            //change column width of column two
+            TableColumnModel columnModel = routeTable.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(100);
+            columnModel.getColumn(1).setPreferredWidth(1000);
+            columnModel.getColumn(2).setPreferredWidth(300);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RemoveRouteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+   
+    public int getRoutID(String name){
+        
+       
+        int RouteID = 0;
+        
+        String rID = "SELECT rID FROM route WHERE name = ?";
+        try {
+            ps = connection.prepareStatement(rID);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                RouteID = (int) rs.getInt("rID");
+            }
+            
+            return RouteID;
+        } catch (SQLException ex) {
+            Logger.getLogger(AddRouteUI.class.getName()).log(Level.SEVERE, null, ex);
+            return RouteID;
+        }
     }
 
     /**
@@ -35,6 +140,10 @@ public class RemoveRouteUI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        selectRouteComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        routeTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1276, 815));
@@ -63,7 +172,7 @@ public class RemoveRouteUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jLabel1)
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 102, 0));
@@ -85,25 +194,70 @@ public class RemoveRouteUI extends javax.swing.JFrame {
             }
         });
 
+        selectRouteComboBox.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        selectRouteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Route" }));
+        selectRouteComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectRouteComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Route Name");
+
+        routeTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        routeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(routeTable);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(172, 172, 172))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel2)
+                .addGap(35, 35, 35)
+                .addComponent(selectRouteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(111, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(175, 175, 175))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(selectRouteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -137,13 +291,47 @@ public class RemoveRouteUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
+        String getRouteText = selectRouteComboBox.getSelectedItem().toString();
+        if(getRouteText.equals("Select Route")){
+            JOptionPane.showMessageDialog(null,"Please select a route to remove");
+        }else{
+        int RouteID = getRoutID(getRouteText);
+        String query = "DELETE from route WHERE rID = ?";
+            try {
+                ps = connection.prepareStatement(query);
+                ps.setInt(1, RouteID);
+                
+
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Deletion successful");
+
+               
+                
+                loadRouteTable();
+        
+                fillRouteComboBox();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AddRouteUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+                 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         RouteUI m1 = new RouteUI();
         m1.setVisible(true);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        m1.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.dispose();
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void selectRouteComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRouteComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectRouteComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,8 +373,12 @@ public class RemoveRouteUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable routeTable;
+    private javax.swing.JComboBox<String> selectRouteComboBox;
     // End of variables declaration//GEN-END:variables
 }

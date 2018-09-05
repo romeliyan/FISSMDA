@@ -183,9 +183,7 @@ public class removeBrand extends javax.swing.JFrame {
             }
         });
 
-        brandTable.setBackground(new java.awt.Color(255, 255, 255));
         brandTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        brandTable.setForeground(new java.awt.Color(0, 0, 0));
         brandTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

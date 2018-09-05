@@ -8,6 +8,7 @@ package fissmda.Route_Subsystem;
 import fissmda.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,10 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class AddRouteUI extends javax.swing.JFrame {
     
-    Connection con = null;
-    PreparedStatement pst = null;
-    
-
+     Connection connection;
     /**
      * Creates new form AddRouteUI
      */
@@ -31,7 +29,7 @@ public class AddRouteUI extends javax.swing.JFrame {
         
         try {
             //connect to db
-            con = DBConnection.getConnection();
+            connection = (Connection)DBConnection.getConnection();
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AddRouteUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,6 +38,41 @@ public class AddRouteUI extends javax.swing.JFrame {
         }
         
     }
+    //is added route
+    public boolean isAddedRoute(String name, Float distance){
+
+        try {
+           
+            
+            //check whether a particular route exist
+            String RouteExist = "SELECT * FROM route WHERE name = ? AND distance = ? ";
+            
+           PreparedStatement ps = connection.prepareStatement(RouteExist);
+            
+            ps.setString(1, name);
+            ps.setFloat(2, distance);
+          
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return true;
+            }
+            else {
+                return false;
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AddRouteUI.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+        
+    }
+    
+    
+    
     //CHECK DISTANCE IS FLOAT OR NOT
     public static boolean isFloat(String distance){
         try{
@@ -72,7 +105,7 @@ public class AddRouteUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         endLocation = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        distance = new javax.swing.JTextField();
+        distances = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -123,7 +156,7 @@ public class AddRouteUI extends javax.swing.JFrame {
         jLabel3.setText("End loction    :");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Distance       :");
+        jLabel4.setText("Distance(KM)  :");
 
         jButton1.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jButton1.setText("CANCEL");
@@ -149,7 +182,7 @@ public class AddRouteUI extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +191,7 @@ public class AddRouteUI extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(endLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(distance, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(distances, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(115, 115, 115))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,7 +223,7 @@ public class AddRouteUI extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(distance, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(distances, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(62, 62, 62)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -233,33 +266,51 @@ public class AddRouteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_startLocationActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if(startLocation.getText().isEmpty()){
+       String sLocation = startLocation.getText();
+           String eLocation = endLocation.getText();
+           String dist = distances.getText();
+           Float distance = Float.parseFloat(dist);
+           String name = ""+sLocation +" - " +eLocation;
+        
+        if(startLocation.getText().isEmpty()){
            JOptionPane.showMessageDialog(null,"Start location is Empty! please enter location");
        }
        else if(endLocation.getText().isEmpty()){
            JOptionPane.showMessageDialog(null,"End location is Empty! please enter location");
        }
-       else if(distance.getText().isEmpty()){
+       else if(dist.isEmpty()){
            JOptionPane.showMessageDialog(null,"Distance is Empty! please enter location");
        }
-       else if(!isFloat(distance.getText())){
+       else if(!isFloat(dist)){
            JOptionPane.showMessageDialog(null,"Distance should be float value! please enter valid value");
-           distance.setText(null);
-       }else{
-           String sLocation = startLocation.getText();
-           String eLocation = endLocation.getText();
-           String dist = distance.getText();
-           Float distance = Float.parseFloat(dist);
-           String name = ""+sLocation +" - " +eLocation;
+           distances.setText(null);
+       }
+       else if(isAddedRoute(name,distance)){
+           JOptionPane.showMessageDialog(null, "This specific route already exists");
+       }
+       
+       
+       else{
+           
            
            try{
-               String q = "INSERT INTO route(name,distance) Values('"+name+"','"+distance+"')";
-                pst = con.prepareStatement(q);
+               String q = "INSERT INTO route(name,distance) values(?,?)";
+               PreparedStatement pst = connection.prepareStatement(q);
+               pst.setString(1, name);
+               pst.setFloat(2, distance);
                 
-                pst.execute();
+               pst.executeUpdate();
+               JOptionPane.showMessageDialog(null, "Insertion successful");
                
-           }catch(Exception e){
                
+               RouteUI m12 = new RouteUI();
+                m12.setVisible(true);
+                this.dispose();
+               
+           }catch(SQLException e){
+               
+           }catch(NullPointerException e){
+               System.out.println("Null POinter exception");
            }
        }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -306,7 +357,7 @@ public class AddRouteUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField distance;
+    private javax.swing.JTextField distances;
     private javax.swing.JTextField endLocation;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
