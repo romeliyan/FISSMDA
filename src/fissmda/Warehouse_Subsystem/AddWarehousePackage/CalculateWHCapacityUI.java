@@ -57,14 +57,19 @@ public class CalculateWHCapacityUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Warehouse Capacity Calculator ");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Warehouse Width (m)");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Warehouse Height (m)");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Warehouse Depth (m)");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Pallet Width (m)");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Pallet Height (m)");
 
         CalculateBtn.setText("Calculate");
@@ -145,9 +150,11 @@ public class CalculateWHCapacityUI extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("warehouse capacity");
         jLabel8.setToolTipText("");
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("warehouse coeffiecient");
 
         OKBtn.setText("OK");
