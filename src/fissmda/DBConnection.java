@@ -25,14 +25,13 @@ public  class DBConnection {
             return connection;
 	}
 	catch(ClassNotFoundException e)
-	{
-            e.printStackTrace();
+        {
             return null;
 	}
 	catch(SQLException e)
         {
-            e.printStackTrace();
             return null;
 	}
+        
     }
 }
