@@ -349,6 +349,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                 try {
                     ps = connection.prepareStatement(sqlExc);
                     ps.execute();
+                    JOptionPane.showMessageDialog(this, "Successfully Added to Database");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
