@@ -9,6 +9,8 @@ import fissmda.Warehouse_Subsystem.AddWarehousePackage.AddWarehouseUI;
 import fissmda.Warehouse_Subsystem.DashBoardPackage.WarehouseDashboard;
 import fissmda.Warehouse_Subsystem.UpdateWarehousePackage.UpdateWarehouseUI;
 import fissmda.Warehouse_Subsystem.ViewWarehousePackage.ViewWarehouse;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -21,6 +23,10 @@ public class WMSUI extends javax.swing.JFrame {
      */
     public WMSUI() {
         initComponents();
+        
+        //Generate in Center at the Runtime 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**

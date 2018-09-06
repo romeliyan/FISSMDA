@@ -441,6 +441,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="CANCLE"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancleBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="addWarehouseBtn1">
           <Properties>

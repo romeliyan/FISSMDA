@@ -9,6 +9,8 @@ import fissmda.Warehouse_Subsystem.DBConnection;
 import fissmda.Warehouse_Subsystem.AddWarehousePackage.AddWarehouseUI;
 import fissmda.Warehouse_Subsystem.WMSUI;
 import fissmda.Warehouse_Subsystem.Warehouse;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +34,11 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
 
     public UpdateWarehouseUI() {
         initComponents();
+        
+         //Generate in Center at the Runtime 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
         connection = DBConnection.getConnection();
         refreshTable();
     }
@@ -90,8 +97,9 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1276, 815));
         setMinimumSize(new java.awt.Dimension(1276, 815));
-        setPreferredSize(new java.awt.Dimension(1276, 815));
         setResizable(false);
+
+        BasePanel.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(51, 102, 0));
 

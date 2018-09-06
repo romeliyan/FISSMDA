@@ -5,8 +5,11 @@
  */
 package fissmda.Warehouse_Subsystem.AddWarehousePackage;
 
+import fissmda.Warehouse_Subsystem.WMSUI;
 import javax.swing.JOptionPane;
 import fissmda.Warehouse_Subsystem.Warehouse;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -19,6 +22,10 @@ public class CalculateWHCapacityUI extends javax.swing.JFrame {
      */
     public CalculateWHCapacityUI() {
         initComponents();
+        
+         //Generate in Center at the Runtime 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**
@@ -222,8 +229,10 @@ public class CalculateWHCapacityUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CancleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancleBtnActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
+          //Asking user to close panel
+        
+            this.setVisible(false);
+        
     }//GEN-LAST:event_CancleBtnActionPerformed
 
     private void CalculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalculateBtnActionPerformed

@@ -121,11 +121,22 @@ public class Warehouse {
     //validate postal code 
     public boolean validatePostalCode(){
         
-        String validPhase = "^[0-9]$";
+        String validPhase = "[0-9]+";
         if(this.warehousePostal.matches(validPhase)){
             return true;
         }else{
             new JOptionPane().showMessageDialog(null, "Postal / ZIP Number is not valid");
+            return false;
+        }
+    }
+    
+    public boolean validateCapacity(){
+        
+        String validPhase = "[0-9]+";
+        if(this.warehouseCapacity.matches(validPhase)){
+            return true;
+        }else{
+            new JOptionPane().showMessageDialog(null, "Capacity Value is not valid");
             return false;
         }
     }
@@ -138,7 +149,15 @@ public class Warehouse {
     //calculate warehouse coeffiecent value
     public double calculateWarehouseCoefficient() {
 
-        int numberOfTotalPallet = ((int) warehouseWidth * (int) warehouseLength) / ((int) warePalletWidth * (int) warePalletHeight);
-        return calculateWarehouseCapacity() / (double) numberOfTotalPallet;
+       
+        double numberOfTotalPallet=(warehouseWidth*warehouseLength)/(warePalletWidth*warePalletHeight);
+        
+        double returnValue =  (calculateWarehouseCapacity()) / numberOfTotalPallet;
+        return returnValue;
     }
+    
+    
+    
+    
+    
 }

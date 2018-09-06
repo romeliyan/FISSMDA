@@ -7,6 +7,8 @@ package fissmda.Warehouse_Subsystem.DashBoardPackage;
 
 import fissmda.Warehouse_Subsystem.DBConnection;
 import fissmda.Warehouse_Subsystem.WMSUI;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +34,11 @@ public class WarehouseDashboard extends javax.swing.JFrame {
      */
     public WarehouseDashboard() {
         initComponents();
+        
+        
+         //Generate in Center at the Runtime 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
         // Establish Connection 
         try {
@@ -179,19 +186,22 @@ public class WarehouseDashboard extends javax.swing.JFrame {
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(187, 187, 187)
                         .addComponent(jLabel2)
-                        .addGap(81, 81, 81)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(warehouseNameView)
+                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(warehouseNameView))
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                        .addGap(81, 81, 81)
                                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel5)
                                             .addComponent(jLabel3))
                                         .addGap(15, 15, 15))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                        .addGap(18, 18, 18)))
                                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(warehouseTelephoneView)
                                     .addComponent(warehouseCapacityView)
@@ -204,7 +214,7 @@ public class WarehouseDashboard extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(642, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +230,6 @@ public class WarehouseDashboard extends javax.swing.JFrame {
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(warehouseNameView)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
@@ -252,6 +261,8 @@ public class WarehouseDashboard extends javax.swing.JFrame {
         kGradientPanel3.setkEndColor(new java.awt.Color(15, 52, 67));
         kGradientPanel3.setkGradientFocus(999);
         kGradientPanel3.setkStartColor(new java.awt.Color(52, 232, 158));
+        kGradientPanel3.setMaximumSize(new java.awt.Dimension(518, 361));
+        kGradientPanel3.setMinimumSize(new java.awt.Dimension(518, 361));
 
         BasicInformationLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
         BasicInformationLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -319,7 +330,7 @@ public class WarehouseDashboard extends javax.swing.JFrame {
                             .addComponent(AddressLine03View)
                             .addComponent(postalCodeView)
                             .addComponent(provinceZipView))))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
         kGradientPanel3Layout.setVerticalGroup(
             kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,6 +363,7 @@ public class WarehouseDashboard extends javax.swing.JFrame {
         );
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/Warehouse_Subsystem/resources/icons8-warehouse-30.png"))); // NOI18N
         jLabel4.setText("Current Warehouse |");
 
         kGradientPanel4.setkEndColor(new java.awt.Color(75, 19, 79));
@@ -369,7 +381,7 @@ public class WarehouseDashboard extends javax.swing.JFrame {
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(BasicInformationLabel2)
-                .addContainerGap(449, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
         kGradientPanel4Layout.setVerticalGroup(
             kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,9 +405,8 @@ public class WarehouseDashboard extends javax.swing.JFrame {
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(kGradientPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(kGradientPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(kGradientPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,7 +421,7 @@ public class WarehouseDashboard extends javax.swing.JFrame {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(kGradientPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

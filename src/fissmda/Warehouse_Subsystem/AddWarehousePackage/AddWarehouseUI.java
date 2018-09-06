@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import fissmda.Warehouse_Subsystem.Warehouse;
 import fissmda.Warehouse_Subsystem.DBConnection;
 import fissmda.Warehouse_Subsystem.WMSUI;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -28,10 +30,14 @@ public class AddWarehouseUI extends javax.swing.JFrame {
     public AddWarehouseUI() {
         initComponents();
 
+        //Generate in Center at the Runtime 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
         //Establish Connection 
         try {
             connection = DBConnection.getConnection();
-            
+
         } catch (Exception e) {
             System.out.println("Unable to Establish Connection with database");
         }
@@ -167,6 +173,11 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
         cancleBtn.setBackground(new java.awt.Color(255, 51, 102));
         cancleBtn.setText("CANCLE");
+        cancleBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancleBtnActionPerformed(evt);
+            }
+        });
 
         addWarehouseBtn1.setBackground(new java.awt.Color(102, 255, 102));
         addWarehouseBtn1.setText("ADD WAREHOUSE");
@@ -349,10 +360,10 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         String warehouseCapacity = capacityValue.getText();
 
         String sqlExc = "INSERT INTO warehouse (warehouse_name,warehouse_addressline1,warehouse_addressline2,warehouse_addressline3,warehouse_zip,warehouse_province,"
-        + "warehouse_telephoneNumber,warehouse_faxNo,warehouse_capacity) values('" + warehouseNameText + "','" + warehouseAddL1 + "','" + warehouseAddL2 + "','" + warehouseAddL3 + "','" + warehousePostal + "','" + warehouseProvince + "','" + warehouseTelephoneNumber + "','" + warehouseFaxNumber + "','" + warehouseCapacity + "')";
+                + "warehouse_telephoneNumber,warehouse_faxNo,warehouse_capacity) values('" + warehouseNameText + "','" + warehouseAddL1 + "','" + warehouseAddL2 + "','" + warehouseAddL3 + "','" + warehousePostal + "','" + warehouseProvince + "','" + warehouseTelephoneNumber + "','" + warehouseFaxNumber + "','" + warehouseCapacity + "')";
 
         Warehouse warehouseObj = new Warehouse(warehouseNameText, warehouseAddL1, warehouseAddL2, warehouseAddL3,
-            warehousePostal, warehouseProvince, warehouseTelephoneNumber, warehouseFaxNumber, warehouseCapacity);
+                warehousePostal, warehouseProvince, warehouseTelephoneNumber, warehouseFaxNumber, warehouseCapacity);
 
         if (warehouseObj.validatewarehouseNameExistInDB() == false) {
             JOptionPane.showMessageDialog(null, "The Entered Warehouse Name is existing in Database");
@@ -361,30 +372,49 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Values cannot be null");
             } else {
 
-                if(warehouseObj.validateContactNumbers()){ // execute if valid
-                    int choice = JOptionPane.showConfirmDialog(this, "Do You want to Add to Database");
-                    if(choice == 0){
-                        try {
-                            ps = connection.prepareStatement(sqlExc);
-                            ps.execute();
-                            JOptionPane.showMessageDialog(this, "Successfully Added to Database");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                if (warehouseObj.validateContactNumbers()) { // execute if valid
+                    if (warehouseObj.validatePostalCode()) {
+                        if (warehouseObj.validateCapacity()) {
+                            int choice = JOptionPane.showConfirmDialog(this, "Do You want to Add to Database");
+                            if (choice == 0) {
+                                try {
+                                    ps = connection.prepareStatement(sqlExc);
+                                    ps.execute();
+                                    JOptionPane.showMessageDialog(this, "Successfully Added to Database");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                          
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Attempt Fail");
                         }
-
-                    }else{
-                        JOptionPane.showMessageDialog(this, "Attempt Fail");
                     }
 
                 }
 
-            }}
+            }
+        }
     }//GEN-LAST:event_addWarehouseBtn1ActionPerformed
+    }
 
     private void calculateWarehouseCapacityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateWarehouseCapacityBtnActionPerformed
         // TODO add your handling code here:
         new CalculateWHCapacityUI().setVisible(true);
     }//GEN-LAST:event_calculateWarehouseCapacityBtnActionPerformed
+
+    private void cancleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancleBtnActionPerformed
+        // TODO add your handling code here:
+
+        //Asking user to close panel
+        int choice = JOptionPane.showConfirmDialog(null, "Do You want to Cancel ?");
+        if (choice == 0) {
+            //cancel button clicked
+            this.setVisible(false);
+            new WMSUI().setVisible(true);
+        } else {
+
+        }
+    }//GEN-LAST:event_cancleBtnActionPerformed
 
     /**
      * @param args the command line arguments

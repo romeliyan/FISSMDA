@@ -7,6 +7,8 @@ package fissmda.Warehouse_Subsystem.ViewWarehousePackage;
 
 import fissmda.Warehouse_Subsystem.*;
 import fissmda.Warehouse_Subsystem.AddWarehousePackage.AddWarehouseUI;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,11 @@ public class ViewWarehouse extends javax.swing.JFrame {
     public ViewWarehouse() {
 
         initComponents();
+        
+         //Generate in Center at the Runtime 
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
         connection = DBConnection.getConnection();
         refreshTable();
     }
