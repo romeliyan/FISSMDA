@@ -3,8 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/melan/Desktop/MelanGitRepository/FISSMDA/src/fissmda/Warehouse_Subsystem/AddWarehousePackage/AddWarehouseUI.java</file>
             <file>file:/home/melan/Desktop/MelanGitRepository/FISSMDA/src/fissmda/Warehouse_Subsystem/DashBoardPackage/WarehouseDashboard.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/Documents/NetBeansProjects/FISSMDA/src/fissmda/Manufacture_Subsystem/ManufacturerUI.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/FISSMDA/src/fissmda/Manufacture_Subsystem/ViewAllManufacturer.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/FISSMDA/src/fissmda/Manufacture_Subsystem/RemoveManufacturer.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/FISSMDA/src/fissmda/Manufacture_Subsystem/AddManufacturer.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/Manufacturer_Subsystem/ManufacturerUI.java</file>
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/fissmda/Warehouse_Subsystem/AddWarehouseUI.java</file>
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/fissmda/Manager_Subsystem/ManagerUI.java</file>
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/Manufacturer_Subsystem/AddManufacturer.java</file>
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/fissmda/DBConnection.java</file>
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/fissmda/FISSMDA.java</file>
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/fissmda/MainUI.java</file>
+            <file>file:/Users/supunbuddhike/Desktop/ITPproject/FISSMDA/src/fissmda/Warehouse_Subsystem/ViewWarehouse.java</file>
+=======
+            <file>file:/D:/Documents/NetBeansProjects/FISSMDA/src/fissmda/Brand_Subsystem/viewAllBrands.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/FISSMDA/src/fissmda/Brand_Subsystem/BrandUI.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/FISSMDA/src/fissmda/Brand_Subsystem/removeBrand.java</file>
+>>>>>>> e069173b815a9084ba70b6ae3fd73ce0a56df041
+>>>>>>> 98047ff1919fb7db81302bd739f23c804a17aac8
+>>>>>>> 9590e1373fbd9b2661d3435f5b70ea529ae54a03
         </group>
     </open-files>
 </project-private>
