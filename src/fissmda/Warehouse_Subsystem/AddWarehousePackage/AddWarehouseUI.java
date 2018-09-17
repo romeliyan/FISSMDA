@@ -121,7 +121,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PannelRight.setBackground(new java.awt.Color(51, 102, 0));
+        PannelRight.setBackground(new java.awt.Color(51, 153, 0));
 
         WarehouseContactInformationLabel.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
         WarehouseContactInformationLabel.setText("Warehouse Contact Information");

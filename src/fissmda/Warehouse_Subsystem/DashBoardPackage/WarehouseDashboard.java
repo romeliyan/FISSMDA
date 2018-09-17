@@ -450,7 +450,7 @@ public class WarehouseDashboard extends javax.swing.JFrame {
 
             while (rs.next()) {
                 String dbReturnName = rs.getString(2);
-                String dbReturnCapacity = rs.getString(1);
+                String dbReturnCapacity = rs.getString(10);
                 String dbReturnTelephone = rs.getString(8);
                 String fetchedFaxNumber = rs.getString(9);
                 fetchedAddressL1 = rs.getString(3);
