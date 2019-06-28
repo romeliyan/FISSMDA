@@ -99,9 +99,10 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1276, 815));
         setResizable(false);
 
+        BasePanel.setBackground(new java.awt.Color(153, 153, 91));
         BasePanel.setForeground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBackground(new java.awt.Color(51, 102, 0));
+        jPanel3.setBackground(new java.awt.Color(153, 153, 91));
 
         updateJTable.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         updateJTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -165,7 +166,7 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 1, 20)); // NOI18N
         jLabel1.setText("Update Warehouse");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/melan/Desktop/icons8-back-arrow-32.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/Warehouse_Subsystem/resources/backB.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -242,7 +243,7 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
                     .addGroup(BasePanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(31, 31, 31)
                         .addComponent(jLabel1)))
                 .addContainerGap(227, Short.MAX_VALUE))
             .addGroup(BasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,9 +253,11 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
             BasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BasePanelLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(BasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(BasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel1))
+                    .addGroup(BasePanelLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1)))
                 .addGap(320, 320, 320)
                 .addGroup(BasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(BasePanelLayout.createSequentialGroup()
@@ -377,9 +380,9 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
             Warehouse warehouseObj = new Warehouse(warehouseNameText, warehouseAddL1, warehouseAddL2, warehouseAddL3,
                     warehousePostal, warehouseProvince, warehouseTelephoneNumber, warehouseFaxNumber, warehouseCapacity);
 
-            if (warehouseObj.validatewarehouseNameExistInDB() == false) {
-                JOptionPane.showMessageDialog(null, "The Entered Warehouse Name is existing in Database");
-            } else {
+//            if (warehouseObj.validatewarehouseNameExistInDB() == false) {
+//                JOptionPane.showMessageDialog(null, "The Entered Warehouse Name is existing in Database");
+//            } else {
                 if (warehouseObj.checkInputTextFiledNull() == false) {
                     JOptionPane.showMessageDialog(null, "Values cannot be null");
                 } else {
@@ -405,9 +408,9 @@ public class UpdateWarehouseUI extends javax.swing.JFrame {
             }
 
         
-        } else {
-
-        }
+//        } else {
+//
+//        }
     }//GEN-LAST:event_updateBtnActionPerformed
 
     /**

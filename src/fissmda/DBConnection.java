@@ -5,33 +5,31 @@
  */
 package fissmda;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
  *
- * @author pasindu
+ * @author Romesh
  */
-public  class DBConnection {
+public class DBConnection {
     
-    public static Connection getConnection() throws ClassNotFoundException, SQLException
-    {
-        try
-	{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/fissmda", "root", "");
-            return connection;
-	}
-	catch(ClassNotFoundException e)
-        {
-            return null;
-	}
-	catch(SQLException e)
-        {
-            return null;
-	}
+    public static Connection connect() {
         
-    }
+        Connection con = null;
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fissmda","root","");
+        }
+        catch(Exception e){
+            
+            System.out.println(e);
+        }
+        return con;
+        
+    } 
+    
+    
 }

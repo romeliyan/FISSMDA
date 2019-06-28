@@ -5,18 +5,100 @@
  */
 package fissmda.Vehicle_Subsystem;
 
+
+import fissmda.Vehicle_Subsystem.DBConnection;
+import fissmda.MainUI;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableColumnModel;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author MaC BrAvO
  */
 public class RemoveVehicleUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form RemoveVehicleUI
-     */
+    
+          Connection con3 = null;
+          PreparedStatement pst3 = null;
+          ResultSet rs2 = null;
+    
     public RemoveVehicleUI() {
         initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        try {
+            //create objects
+            con3 = DBConnection.getConnection();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RemoveVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RemoveVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        fillVehicleComboBox();
+        loadVehicleTable();
+        
+        
     }
+    
+    public void fillVehicleComboBox(){
+        
+        
+        try {
+            String q4 = "SELECT * FROM vehicle";
+            pst3 = con3.prepareStatement(q4);
+            rs2 = pst3.executeQuery(q4);
+            
+            //remove all available items 
+            combobox1.removeAllItems();
+            combobox1.addItem("Select Vehicle");
+            
+            while(rs2.next()){
+                
+                combobox1.addItem(rs2.getString("vehicle_number") );
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RemoveVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadVehicleTable(){
+ 
+        
+        try {
+            String q4 = "SELECT vehicle_number as 'Vehicle Number', type as 'Type', fuel_type as 'Fuel Type' FROM vehicle";
+            pst3 = con3.prepareStatement(q4);
+            rs2 = pst3.executeQuery();
+            
+            vehicletable1.setModel(DbUtils.resultSetToTableModel(rs2));
+            
+            //change row height
+            vehicletable1.setRowHeight(30);
+            
+            //change column width of column two
+            TableColumnModel columnModel = vehicletable1.getColumnModel();
+            columnModel.getColumn(0).setPreferredWidth(500);
+            columnModel.getColumn(1).setPreferredWidth(500);
+            columnModel.getColumn(2).setPreferredWidth(500);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RemoveVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +109,244 @@ public class RemoveVehicleUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        removevehiclelable1 = new javax.swing.JLabel();
+        backbutton3 = new javax.swing.JButton();
+        backbutton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        vehicletable1 = new javax.swing.JTable();
+        combobox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 0));
+        setPreferredSize(new java.awt.Dimension(1276, 815));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(137, 229, 45));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1276, 815));
+
+        jPanel3.setBackground(new java.awt.Color(153, 153, 91));
+
+        removevehiclelable1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        removevehiclelable1.setForeground(new java.awt.Color(255, 255, 255));
+        removevehiclelable1.setText("Vehicle");
+
+        backbutton3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        backbutton3.setText("CANCEL");
+        backbutton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbutton3ActionPerformed(evt);
+            }
+        });
+
+        backbutton4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        backbutton4.setText("REMOVE VEHICLE");
+        backbutton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbutton4ActionPerformed(evt);
+            }
+        });
+
+        vehicletable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        vehicletable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(vehicletable1);
+
+        combobox1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        combobox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vehicle" }));
+        combobox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combobox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/removeVehicle_title.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(312, 312, 312)
+                        .addComponent(removevehiclelable1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(combobox1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(backbutton3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138)
+                        .addComponent(backbutton4)))
+                .addContainerGap(250, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(269, 269, 269))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(removevehiclelable1)
+                    .addComponent(combobox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backbutton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(206, 206, 206))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(137, 229, 45));
+        jPanel2.setPreferredSize(new java.awt.Dimension(350, 58));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/greenBack.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/greenHome.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/CompanyLogoSmall(new).png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 815, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 528, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 234, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backbutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbutton3ActionPerformed
+        
+        VehicleUI ui3 = new VehicleUI();
+        ui3.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backbutton3ActionPerformed
+
+    private void backbutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbutton4ActionPerformed
+        
+        String getVehicleText = combobox1.getSelectedItem().toString();
+        
+        
+        //validate inputs
+        if(getVehicleText.equals("Select Vehicle")){
+            JOptionPane.showMessageDialog(null,"Please select a Vehivle to remove");
+        }
+        else{
+            //sql query
+            String q4 = "DELETE from vehicle WHERE vehicle_number = ?";
+            
+            try {
+                pst3 = con3.prepareStatement(q4);
+                pst3.setString(1, getVehicleText);
+                pst3.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Deletion successful");
+            } catch (SQLException ex) {
+                Logger.getLogger(RemoveVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            fillVehicleComboBox();
+            loadVehicleTable();
+        }
+    }//GEN-LAST:event_backbutton4ActionPerformed
+
+    private void combobox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combobox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        VehicleUI ui = new VehicleUI();
+        ui.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        MainUI ui = new MainUI();
+        ui.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +384,18 @@ public class RemoveVehicleUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backbutton3;
+    private javax.swing.JButton backbutton4;
+    private javax.swing.JComboBox<String> combobox1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel removevehiclelable1;
+    private javax.swing.JTable vehicletable1;
     // End of variables declaration//GEN-END:variables
 }

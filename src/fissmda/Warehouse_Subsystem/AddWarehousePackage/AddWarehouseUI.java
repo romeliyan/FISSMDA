@@ -54,7 +54,6 @@ public class AddWarehouseUI extends javax.swing.JFrame {
 
         PannelLeft = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         PannelRight = new javax.swing.JPanel();
         warehouseName = new javax.swing.JTextField();
         WarehouseContactInformationLabel = new javax.swing.JLabel();
@@ -81,14 +80,17 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         proviceCombo = new javax.swing.JComboBox<>();
         cancleBtn = new javax.swing.JButton();
         addWarehouseBtn1 = new javax.swing.JButton();
+        Demo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Maradana Distributors WMS ");
-        setMaximumSize(new java.awt.Dimension(1276, 815));
         setMinimumSize(new java.awt.Dimension(1276, 815));
-        setPreferredSize(new java.awt.Dimension(1276, 815));
         setResizable(false);
 
+        PannelLeft.setBackground(new java.awt.Color(153, 153, 91));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/Warehouse_Subsystem/resources/backB.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,69 +98,52 @@ public class AddWarehouseUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans Light", 1, 20)); // NOI18N
-        jLabel2.setText("Add Warehouse");
+        PannelRight.setBackground(new java.awt.Color(137, 229, 47));
 
-        javax.swing.GroupLayout PannelLeftLayout = new javax.swing.GroupLayout(PannelLeft);
-        PannelLeft.setLayout(PannelLeftLayout);
-        PannelLeftLayout.setHorizontalGroup(
-            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannelLeftLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PannelLeftLayout.setVerticalGroup(
-            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannelLeftLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        PannelRight.setBackground(new java.awt.Color(51, 153, 0));
-
+        WarehouseContactInformationLabel.setBackground(new java.awt.Color(0, 0, 0));
         WarehouseContactInformationLabel.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
+        WarehouseContactInformationLabel.setForeground(new java.awt.Color(0, 0, 0));
         WarehouseContactInformationLabel.setText("Warehouse Contact Information");
 
-        warehouseNameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        warehouseNameLabel.setForeground(new java.awt.Color(102, 102, 102));
         warehouseNameLabel.setText("Warehouse Name");
 
-        AddressLine01Label.setForeground(new java.awt.Color(255, 255, 255));
+        AddressLine01Label.setForeground(new java.awt.Color(102, 102, 102));
         AddressLine01Label.setText("Address Line 01");
 
-        AddressLine02Label.setForeground(new java.awt.Color(255, 255, 255));
+        AddressLine02Label.setForeground(new java.awt.Color(102, 102, 102));
         AddressLine02Label.setText("Address Line 02");
 
-        AddressLine03Label.setForeground(new java.awt.Color(255, 255, 255));
+        AddressLine03Label.setForeground(new java.awt.Color(102, 102, 102));
         AddressLine03Label.setText("Address Line 03");
 
-        warehouseNameLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        warehouseNameLabel4.setForeground(new java.awt.Color(102, 102, 102));
         warehouseNameLabel4.setText("Postal Code / ZIP");
 
-        warehouseNameLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        warehouseNameLabel5.setForeground(new java.awt.Color(102, 102, 102));
         warehouseNameLabel5.setText("Province / State");
 
+        BasicInformationLabel1.setBackground(new java.awt.Color(0, 0, 0));
         BasicInformationLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
+        BasicInformationLabel1.setForeground(new java.awt.Color(0, 0, 0));
         BasicInformationLabel1.setText("Basic Information");
 
-        FaxNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
+        FaxNumberLabel.setForeground(new java.awt.Color(102, 102, 102));
         FaxNumberLabel.setText("Fax Number");
 
-        TelephoneNumberLabel.setForeground(new java.awt.Color(255, 255, 255));
+        TelephoneNumberLabel.setForeground(new java.awt.Color(102, 102, 102));
         TelephoneNumberLabel.setText("Telephone Number");
 
+        WarehouseContactInformationLabel1.setBackground(new java.awt.Color(0, 0, 0));
         WarehouseContactInformationLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
+        WarehouseContactInformationLabel1.setForeground(new java.awt.Color(0, 0, 0));
         WarehouseContactInformationLabel1.setText("Warehouse Capacity Information");
 
-        FaxNumberLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        FaxNumberLabel2.setForeground(new java.awt.Color(102, 102, 102));
         FaxNumberLabel2.setText("Capacity ");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("(Approximate Value / CubicFeet)");
 
         calculateWarehouseCapacityBtn.setText("Calculate Capacity");
@@ -183,6 +168,14 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         addWarehouseBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addWarehouseBtn1ActionPerformed(evt);
+            }
+        });
+
+        Demo.setBackground(new java.awt.Color(102, 255, 102));
+        Demo.setText("Demo");
+        Demo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DemoActionPerformed(evt);
             }
         });
 
@@ -221,16 +214,18 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                     .addGroup(PannelRightLayout.createSequentialGroup()
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PannelRightLayout.createSequentialGroup()
-                                .addGap(161, 161, 161)
-                                .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PannelRightLayout.createSequentialGroup()
                                 .addGap(56, 56, 56)
                                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(WarehouseContactInformationLabel1)
-                                    .addComponent(WarehouseContactInformationLabel))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(WarehouseContactInformationLabel)))
+                            .addGroup(PannelRightLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(Demo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(PannelRightLayout.createSequentialGroup()
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PannelRightLayout.createSequentialGroup()
@@ -251,17 +246,17 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(faxNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(telephoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 317, Short.MAX_VALUE))))
+                        .addGap(0, 84, Short.MAX_VALUE))))
             .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PannelRightLayout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(BasicInformationLabel1)
-                    .addContainerGap(1129, Short.MAX_VALUE)))
+                    .addContainerGap(891, Short.MAX_VALUE)))
         );
         PannelRightLayout.setVerticalGroup(
             PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PannelRightLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(97, 97, 97)
                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PannelRightLayout.createSequentialGroup()
                         .addComponent(WarehouseContactInformationLabel)
@@ -308,32 +303,62 @@ public class AddWarehouseUI extends javax.swing.JFrame {
                             .addComponent(warehouseNameLabel4))
                         .addGap(18, 18, 18)
                         .addComponent(proviceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addWarehouseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Demo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88))
             .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PannelRightLayout.createSequentialGroup()
                     .addGap(97, 97, 97)
                     .addComponent(BasicInformationLabel1)
-                    .addContainerGap(518, Short.MAX_VALUE)))
+                    .addContainerGap(693, Short.MAX_VALUE)))
+        );
+
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Light", 1, 25)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Add Warehouse");
+
+        javax.swing.GroupLayout PannelLeftLayout = new javax.swing.GroupLayout(PannelLeft);
+        PannelLeft.setLayout(PannelLeftLayout);
+        PannelLeftLayout.setHorizontalGroup(
+            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannelLeftLayout.createSequentialGroup()
+                .addGroup(PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PannelLeftLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3))
+                    .addGroup(PannelLeftLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(PannelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        PannelLeftLayout.setVerticalGroup(
+            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannelLeftLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PannelLeftLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addComponent(PannelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PannelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PannelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(PannelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PannelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PannelRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(PannelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -415,6 +440,20 @@ public class AddWarehouseUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cancleBtnActionPerformed
 
+    private void DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DemoActionPerformed
+        // TODO add your handling code here:
+       
+        
+        warehouseName.setText("Maradana WH2");
+        addressLine01.setText("Main Maradana Road");
+        addressLine02.setText("Maradana");
+        addressLine03.setText("Colombo");
+        postalZipCode.setText("2231");
+        telephoneNumber.setText("0113252376");
+        faxNumber.setText("0112568458");
+        capacityValue.setText("2480");
+    }//GEN-LAST:event_DemoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -456,6 +495,7 @@ public class AddWarehouseUI extends javax.swing.JFrame {
     private javax.swing.JLabel AddressLine02Label;
     private javax.swing.JLabel AddressLine03Label;
     private javax.swing.JLabel BasicInformationLabel1;
+    private javax.swing.JButton Demo;
     private javax.swing.JLabel FaxNumberLabel;
     private javax.swing.JLabel FaxNumberLabel2;
     private javax.swing.JPanel PannelLeft;

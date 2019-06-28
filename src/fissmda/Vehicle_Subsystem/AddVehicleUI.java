@@ -5,13 +5,17 @@
  */
 package fissmda.Vehicle_Subsystem;
 
-import fissmda.DBConnection;
+import fissmda.Vehicle_Subsystem.DBConnection;
+import fissmda.MainUI;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +37,28 @@ public class AddVehicleUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AddVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //open the current jFrame in center of the screen
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }
+    
+    public boolean isInt (String year1)
+    {
+        try
+        {
+            Integer.parseInt(year1);
+        }
+        catch(NumberFormatException e)
+            
+        {
+            return false;
+        }
+        catch(NullPointerException e)
+        {
+            return false;
+        }
+        return true;
     }
     
     
@@ -46,83 +72,66 @@ public class AddVehicleUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PannelLeft = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         PannelRight = new javax.swing.JPanel();
         vehiclemodel = new javax.swing.JTextField();
         vehiclemodelname = new javax.swing.JLabel();
-        vehicletype = new javax.swing.JTextField();
-        vehicletypename = new javax.swing.JLabel();
         vehiclebrand = new javax.swing.JTextField();
+        vehicletypename = new javax.swing.JLabel();
+        vehiclefueltype = new javax.swing.JTextField();
         vehiclebrandname = new javax.swing.JLabel();
         vehiclenumber = new javax.swing.JTextField();
         vehiclenumbername = new javax.swing.JLabel();
         BasicInformationLabel1 = new javax.swing.JLabel();
         vehiclemodelyearname = new javax.swing.JLabel();
-        vehiclemodelyear = new javax.swing.JTextField();
+        vehicletype = new javax.swing.JTextField();
         vehiclefueltypename = new javax.swing.JLabel();
-        vehiclefueltype = new javax.swing.JTextField();
+        vehiclemodelyear = new javax.swing.JTextField();
         cancelbutton = new javax.swing.JButton();
         addvehiclebutton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        PannelLeft = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1276, 815));
         setResizable(false);
 
-        PannelLeft.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(137, 229, 45));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1276, 815));
 
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
+        PannelRight.setBackground(new java.awt.Color(153, 153, 91));
+        PannelRight.setPreferredSize(new java.awt.Dimension(1000, 866));
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans Light", 1, 20)); // NOI18N
-        jLabel2.setText("Add Vehicle");
+        vehiclemodel.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
-        javax.swing.GroupLayout PannelLeftLayout = new javax.swing.GroupLayout(PannelLeft);
-        PannelLeft.setLayout(PannelLeftLayout);
-        PannelLeftLayout.setHorizontalGroup(
-            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannelLeftLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PannelLeftLayout.setVerticalGroup(
-            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannelLeftLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        PannelRight.setBackground(new java.awt.Color(0, 153, 0));
-
-        vehiclemodelname.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        vehiclemodelname.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         vehiclemodelname.setForeground(new java.awt.Color(255, 255, 255));
         vehiclemodelname.setText("Vehicle Model");
 
-        vehicletypename.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        vehiclebrand.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+
+        vehicletypename.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         vehicletypename.setForeground(new java.awt.Color(255, 255, 255));
         vehicletypename.setText("Vehicle Type");
 
-        vehiclebrandname.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        vehiclefueltype.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+
+        vehiclebrandname.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         vehiclebrandname.setForeground(new java.awt.Color(255, 255, 255));
         vehiclebrandname.setText("Vehicle Brand");
 
+        vehiclenumber.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         vehiclenumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vehiclenumberActionPerformed(evt);
             }
         });
 
-        vehiclenumbername.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        vehiclenumbername.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         vehiclenumbername.setForeground(new java.awt.Color(255, 255, 255));
         vehiclenumbername.setText("Vehicle Number");
 
@@ -130,35 +139,40 @@ public class AddVehicleUI extends javax.swing.JFrame {
         BasicInformationLabel1.setForeground(new java.awt.Color(255, 255, 255));
         BasicInformationLabel1.setText("Vehicle Details");
 
-        vehiclemodelyearname.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        vehiclemodelyearname.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         vehiclemodelyearname.setForeground(new java.awt.Color(255, 255, 255));
         vehiclemodelyearname.setText("Model Year");
 
-        vehiclemodelyear.addActionListener(new java.awt.event.ActionListener() {
+        vehicletype.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        vehicletype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vehiclemodelyearActionPerformed(evt);
+                vehicletypeActionPerformed(evt);
             }
         });
 
-        vehiclefueltypename.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        vehiclefueltypename.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         vehiclefueltypename.setForeground(new java.awt.Color(255, 255, 255));
         vehiclefueltypename.setText("Fuel Type");
 
-        cancelbutton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cancelbutton.setText("CANCLE");
+        vehiclemodelyear.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+
+        cancelbutton.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        cancelbutton.setText("CANCEL");
         cancelbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelbuttonActionPerformed(evt);
             }
         });
 
-        addvehiclebutton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        addvehiclebutton.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         addvehiclebutton.setText("ADD VEHICLE");
         addvehiclebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addvehiclebuttonActionPerformed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/addVehicle_title.png"))); // NOI18N
 
         javax.swing.GroupLayout PannelRightLayout = new javax.swing.GroupLayout(PannelRight);
         PannelRight.setLayout(PannelRightLayout);
@@ -170,93 +184,166 @@ public class AddVehicleUI extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addComponent(BasicInformationLabel1))
                     .addGroup(PannelRightLayout.createSequentialGroup()
+                        .addGap(202, 202, 202)
                         .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PannelRightLayout.createSequentialGroup()
-                                .addGap(514, 514, 514)
-                                .addComponent(cancelbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70))
                             .addGroup(PannelRightLayout.createSequentialGroup()
-                                .addGap(227, 227, 227)
                                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(vehiclemodelname)
                                     .addComponent(vehicletypename)
-                                    .addComponent(vehiclenumbername))
-                                .addGap(27, 27, 27)
-                                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(vehiclenumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(vehicletype, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(vehiclemodel, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(108, 108, 108)))
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addvehiclebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(PannelRightLayout.createSequentialGroup()
+                                    .addComponent(vehiclemodelyearname)
+                                    .addComponent(vehiclefueltypename)
                                     .addComponent(vehiclebrandname)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(vehiclebrand, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(PannelRightLayout.createSequentialGroup()
-                                    .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(vehiclefueltypename)
-                                        .addComponent(vehiclemodelyearname))
-                                    .addGap(58, 58, 58)
-                                    .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(vehiclemodelyear, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vehiclefueltype, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(0, 170, Short.MAX_VALUE))
+                                    .addComponent(vehiclemodelname))
+                                .addGap(34, 34, 34)
+                                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(vehicletype, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vehiclemodel, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vehiclemodelyear, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vehiclefueltype, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vehiclebrand, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PannelRightLayout.createSequentialGroup()
+                                .addComponent(vehiclenumbername)
+                                .addGap(18, 18, 18)
+                                .addComponent(vehiclenumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 600, Short.MAX_VALUE))
+            .addGroup(PannelRightLayout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(cancelbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(241, 241, 241)
+                .addComponent(addvehiclebutton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PannelRightLayout.setVerticalGroup(
             PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PannelRightLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(BasicInformationLabel1)
-                .addGap(24, 24, 24)
                 .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PannelRightLayout.createSequentialGroup()
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vehiclenumbername)
-                            .addComponent(vehiclenumber, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vehiclemodel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vehiclemodelname))
-                        .addGap(18, 18, 18)
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vehicletype, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vehicletypename))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cancelbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addvehiclebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54))
+                        .addGap(79, 79, 79)
+                        .addComponent(BasicInformationLabel1))
                     .addGroup(PannelRightLayout.createSequentialGroup()
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vehiclemodelyear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vehiclemodelyearname))
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vehiclenumbername)
+                    .addComponent(vehiclenumber, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vehiclemodel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehiclemodelname))
+                .addGap(34, 34, 34)
+                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vehicletype, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehicletypename))
+                .addGap(41, 41, 41)
+                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vehiclemodelyear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehiclemodelyearname))
+                .addGap(36, 36, 36)
+                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vehiclefueltype, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehiclefueltypename))
+                .addGap(33, 33, 33)
+                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vehiclebrand, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehiclebrandname))
+                .addGap(102, 102, 102)
+                .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addvehiclebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+
+        PannelLeft.setBackground(new java.awt.Color(137, 229, 45));
+        PannelLeft.setPreferredSize(new java.awt.Dimension(350, 58));
+
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/greenBack.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/greenHome.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fissmda/ButtonImages/CompanyLogoSmall(new).png"))); // NOI18N
+
+        javax.swing.GroupLayout PannelLeftLayout = new javax.swing.GroupLayout(PannelLeft);
+        PannelLeft.setLayout(PannelLeftLayout);
+        PannelLeftLayout.setHorizontalGroup(
+            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannelLeftLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PannelLeftLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PannelLeftLayout.createSequentialGroup()
+                        .addGap(0, 63, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vehiclefueltype, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vehiclefueltypename))
-                        .addGap(18, 18, 18)
-                        .addGroup(PannelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vehiclebrand, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vehiclebrandname))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73))))
+            .addGroup(PannelLeftLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        PannelLeftLayout.setVerticalGroup(
+            PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PannelLeftLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PannelLeftLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(105, 105, 105))
+                    .addGroup(PannelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(PannelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PannelRight, javax.swing.GroupLayout.PREFERRED_SIZE, 1268, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PannelRight, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+            .addComponent(PannelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PannelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PannelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1299, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PannelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PannelRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -275,37 +362,56 @@ public class AddVehicleUI extends javax.swing.JFrame {
         String VehicleModelYear = vehiclemodelyear.getText();
         String VehicleFuelType = vehiclefueltype.getText();
         String VehicleNumber = vehiclenumber.getText();
-        int year = Integer.parseInt(VehicleModelYear);
         
-        try {
+        if(VehicleModel.isEmpty() || VehicleType.isEmpty() || VehicleBrand.isEmpty() || VehicleModelYear.isEmpty() || VehicleFuelType.isEmpty() || VehicleNumber.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"This Field can not be Empty");
+        }
+        else if(!isInt(VehicleModelYear))
+        {
+            JOptionPane.showMessageDialog(null,"Year must be an Integer");
+        }
+        else
+        {
+        
+            try {
             String q1 = "INSERT INTO vehicle (model,type,brand,vehicle_number,model_year,fuel_type) values (?,?,?,?,?,?)";
-        pst1 = con.prepareStatement(q1);
-        pst1.setString(1, VehicleModel);
-        pst1.setString(2, VehicleType);
-        pst1.setString(3, VehicleBrand);
-        pst1.setString(4, VehicleNumber);
-        pst1.setInt(5, year);
-        pst1.setString(6, VehicleFuelType);
-          
-        pst1.executeUpdate();
-        
-        //Showing Successful Message Page
-        AddVehicleShowPage showpage1 = new AddVehicleShowPage();
-        showpage1.setVisible(true);
-        this.dispose();
+            int year = Integer.parseInt(VehicleModelYear);
+            pst1 = con.prepareStatement(q1);
+            pst1.setString(1, VehicleModel);
+            pst1.setString(2, VehicleType);
+            pst1.setString(3, VehicleBrand);
+            pst1.setString(4, VehicleNumber);
+            pst1.setInt(5, year);
+            pst1.setString(6, VehicleFuelType);
+
+            pst1.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Successful");
+
+            //Clear Fields
+                vehiclemodel.setText(null);
+                vehicletype.setText(null);
+                vehiclebrand.setText(null);
+                vehiclemodelyear.setText(null);
+                vehiclefueltype.setText(null);
+                vehiclenumber.setText(null);
+            
+            
         
         }
         catch (SQLException ex) {
             Logger.getLogger(AddVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
             
         }
+    }
                
 
     }//GEN-LAST:event_addvehiclebuttonActionPerformed
 
-    private void vehiclemodelyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehiclemodelyearActionPerformed
+    private void vehicletypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicletypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_vehiclemodelyearActionPerformed
+    }//GEN-LAST:event_vehicletypeActionPerformed
 
     private void vehiclenumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehiclenumberActionPerformed
         // TODO add your handling code here:
@@ -317,6 +423,19 @@ public class AddVehicleUI extends javax.swing.JFrame {
         ui3.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelbuttonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        VehicleUI ui = new VehicleUI();
+        ui.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        MainUI ui = new MainUI();
+        ui.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,8 +478,12 @@ public class AddVehicleUI extends javax.swing.JFrame {
     private javax.swing.JPanel PannelRight;
     private javax.swing.JButton addvehiclebutton;
     private javax.swing.JButton cancelbutton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField vehiclebrand;
     private javax.swing.JLabel vehiclebrandname;
     private javax.swing.JTextField vehiclefueltype;
